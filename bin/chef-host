@@ -9,7 +9,8 @@ CMD_NAME=${0##*/}
 CMD_DIR=$(cd $(dirname $0);pwd)
 REPO_DIR=$(cd ${CMD_DIR}/..;pwd)
 
-HN=${HOSTNAME%%.*}
+#HN=${HOSTNAME%%.*}
+HN='web'
 LANG=en
 FILE_DATE=`date +%y%m%d%H%M%S%N`
 RUN_LIST_FILE="/tmp/chef_solo_run_list.${FILE_DATE}.json"

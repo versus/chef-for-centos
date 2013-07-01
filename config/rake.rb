@@ -6,10 +6,10 @@
 ###
 
 # The company name - used for SSL certificates, and in srvious other places
-COMPANY_NAME = ""
+COMPANY_NAME = "home sweet home"
 
 # The Country Name to use for SSL Certificates
-SSL_COUNTRY_NAME = "ja"
+SSL_COUNTRY_NAME = "ua"
 
 # The State Name to use for SSL Certificates
 SSL_STATE_NAME = "Several"
@@ -21,7 +21,7 @@ SSL_LOCALITY_NAME = "Locality"
 SSL_ORGANIZATIONAL_UNIT_NAME = "Operations"
 
 # The SSL contact email address
-SSL_EMAIL_ADDRESS = "kohki.makimoto@gmail"
+SSL_EMAIL_ADDRESS = "versus.ua@gmail"
 
 # License for new Cookbooks
 # Can be :apachev2 or :none
