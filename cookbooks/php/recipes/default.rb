@@ -27,7 +27,7 @@ script "install php-4.3" do
   code <<-EOH
     tar -zxvf php-4.3.5RC4.tar.gz
     cd ./php-4.3.5RC4
-    ./configure --with-mysql --with-apxs2=/usr/local/apache2/bin/apxs
+    ./configure --with-mysql --with-apxs2=/opt/apache2/bin/apxs 
     make
     make install
   EOH
