@@ -45,7 +45,7 @@ script "install httpd-2.0.64" do
   end
 end
 
-template "/etc/init.d/httpd " do
+template "/etc/init.d/httpd" do
   source "conf/httpd.erb"
   owner "root"
   group "root"
