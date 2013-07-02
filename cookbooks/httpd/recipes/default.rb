@@ -41,7 +41,7 @@ script "install httpd-2.0.64" do
     make install
   EOH
   not_if do
-    File.exists?("/opt/apache2/bin/httpd")
+    File.exists?("/usr/local/apache2/bin/httpd")
   end
 end
 
@@ -55,7 +55,7 @@ end
 # Configration files
 #
 # httpd.conf
-template "/opt/apache2/conf/httpd.conf " do
+template "/usr/local/apache2/conf/httpd.conf " do
   source "conf/httpd.conf.erb"
   owner "root"
   group "root"
