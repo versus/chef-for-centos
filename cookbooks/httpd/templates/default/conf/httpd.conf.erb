@@ -216,7 +216,7 @@ MaxRequestsPerChild    0
 #
 #Listen 12.34.56.78:80
 
-Listen 80
+Listen 8080
 
 #
 # Dynamic Shared Object (DSO) Support
@@ -825,6 +825,9 @@ AddCharset shift_jis   .sjis
 # AddType allows you to add to or override the MIME configuration
 # file mime.types for specific file types.
 #
+
+AddType application/x-httpd-php .php
+
 #AddType application/x-tar .tgz
 #
 # AddEncoding allows you to have certain browsers uncompress

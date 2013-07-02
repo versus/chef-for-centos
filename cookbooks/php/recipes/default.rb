@@ -31,6 +31,9 @@ script "install php-4.3" do
     make
     make install
   EOH
+  not_if do
+    File.exists?("/usr/local/bin/php")
+  end
 end
 
 #
