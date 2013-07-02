@@ -49,10 +49,10 @@ end
 # Configration files
 #
 # httpd.conf
-#template "/etc/httpd/conf/httpd.conf" do
-#  source "conf/httpd.conf.erb"
-#  owner "root"
-#  group "root"
-#  mode "0664"
+template "/etc/httpd/conf/httpd.conf" do
+  source "conf/httpd.conf.erb"
+  owner "root"
+  group "root"
+  mode "0664"
 #  notifies :restart, "service[httpd]"
-#end
+end
