@@ -23,6 +23,14 @@ end
 #
 # Configuration files
 #
+template "/etc/sysconfig/iptables-config" do
+  source "iptables-config.erb"
+  owner "root"
+  group "root"
+  mode "0600"
+  notifies :restart, "service[iptables]"
+end
+
 template "/etc/sysconfig/iptables" do
   source "iptables.erb"
   owner "root"
@@ -30,6 +38,9 @@ template "/etc/sysconfig/iptables" do
   mode "0600"
   notifies :restart, "service[iptables]"
 end
+
+
+
 
 #TODO: add for ftp passive mode 
 #/etc/sysconfig/iptables-config 
