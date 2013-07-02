@@ -22,7 +22,7 @@ cookbook_file "/tmp/httpd-2.0.64.tar.gz" do
 end
 
 
-directory '/opt/apache2' do
+directory '/usr/local/apache2' do
   owner "root"
   group "root"
   mode "0755"
@@ -36,7 +36,7 @@ script "install httpd-2.0.64" do
   code <<-EOH
     tar -zxvf httpd-2.0.64.tar.gz
     cd ./httpd-2.0.64
-    ./configure --prefix=/opt/apache2/
+    ./configure --prefix=/usr/local/apache2/
     make
     make install
   EOH

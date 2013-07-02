@@ -16,7 +16,7 @@
 case "$1" in
 start)
 echo -n "Starting httpd: "
-daemon /opt/apache2/bin/httpd -DSSL
+daemon /usr/local/apache2/bin/httpd -DSSL
 echo
 touch /var/lock/subsys/httpd
 ;;
@@ -25,7 +25,7 @@ echo -n "Shutting down http: "
 killproc httpd
 echo
 rm -f /var/lock/subsys/httpd
-rm -f /opt/apache2/logs/httpd.pid
+rm -f /usr/local/apache2/logs/httpd.pid
 ;;
 status)
 status httpd
