@@ -33,7 +33,7 @@ end
 
 package "remi-release" do
   action :install
-  source "/var/tmp/remi-release-6.rpm"
+  source "/var/tmp/remi-release-5.rpm"
   provider Chef::Provider::Package::Rpm
   not_if "rpm -q remi-release"
 end
