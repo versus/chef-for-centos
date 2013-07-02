@@ -49,7 +49,7 @@ end
 # Configration files
 #
 # httpd.conf
-template "/etc/httpd/conf/httpd.conf" do
+template "/opt/apache2/conf/httpd.conf " do
   source "conf/httpd.conf.erb"
   owner "root"
   group "root"
