@@ -63,3 +63,7 @@ template "/opt/apache2/conf/httpd.conf " do
   mode "0664"
   notifies :restart, "service[httpd]"
 end
+
+execute "chkconfig httpd on" do
+  command "chkconfig httpd on"
+end
