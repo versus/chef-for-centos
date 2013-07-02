@@ -1,33 +1,34 @@
 #
-# = 3rd Party yum リポジトリ
+# = 3rd Party yum リポジトリrequire "default"
+
 #
 
 #
 # Package install
 #
 # epel
-cookbook_file "/var/tmp/epel-release-6-5.noarch.rpm" do
-  source "epel-release-6-5.noarch.rpm"
+cookbook_file "/var/tmp/epel-release-5-4.noarch.rpm" do
+  source "epel-release-5-4.noarch.rpm"
   owner "root"
   group "root"
   mode "0644"
-  not_if "test -e /var/tmp/epel-release-6-5.noarch.rpm"
+  not_if "test -e /var/tmp/epel-release-5-4.noarch.rpm"
 end
 
 package "epel-release" do
   action :install
-  source "/var/tmp/epel-release-6-5.noarch.rpm"
+  source "/var/tmp/epel-release-5-4.noarch.rpm"
   provider Chef::Provider::Package::Rpm
   not_if "rpm -q epel-release"
 end
 
 # remi
-cookbook_file "/var/tmp/remi-release-6.rpm" do
+cookbook_file "/var/tmp/remi-release-5.rpm" do
   source "remi-release-6.rpm"
   owner "root"
   group "root"
   mode "0644"
-  not_if "test -e /var/tmp/remi-release-6.rpm"
+  not_if "test -e /var/tmp/remi-release-5.rpm"
 end
 
 package "remi-release" do
