@@ -7,7 +7,8 @@ run_list(
   "recipe[iptables]",
   "recipe[httpd]",
   "recipe[php]",
-  "recipe[mysql]"
+  "recipe[mysql]",
+  "recipe[varnish-cache]"
 )
 
 default_attributes({
