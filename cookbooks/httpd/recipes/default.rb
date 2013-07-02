@@ -45,6 +45,13 @@ script "install httpd-2.0.64" do
   end
 end
 
+template "/etc/init.d/httpd " do
+  source "conf/httpd.erb"
+  owner "root"
+  group "root"
+  mode "0755"
+  notifies :restart, "service[httpd]"
+end
 #
 # Configration files
 #
@@ -54,5 +61,5 @@ template "/opt/apache2/conf/httpd.conf " do
   owner "root"
   group "root"
   mode "0664"
-#  notifies :restart, "service[httpd]"
+  notifies :restart, "service[httpd]"
 end
