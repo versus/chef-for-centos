@@ -3,43 +3,45 @@
 #
 
 #
-# Package install
+# install from source
 #
-package "httpd" do
-  action :install
-  not_if "rpm -q httpd"
+
+# cd /usr/src/
+# tar -zxvf httpd-2.0.64
+# cd ./httpd-2.0.64
+# ./configure --prefix=/usr/local/
+# make
+# make install
+
+cookbook_file "/tmp/httpd-2.0.64.tar.gz" do
+  source "httpd-2.0.64.tar.gz"
+  owner "root"
+  group "root"
+  mode "0644"
+  not_if "test -e /tmp/httpd-2.0.64.tar.gz"
 end
 
-package "mod_ssl" do
-  action :install
-  not_if "rpm -q mod_ssl"
-end
-
-#
-# chkconfig
-#
-execute "chkconfig httpd on" do
-  command "chkconfig httpd on"
-end
-
-#
-# command
-#
-service "httpd" do
-  stop_command    "/etc/init.d/httpd stop"
-  start_command   "/etc/init.d/httpd start"
-  restart_command "/etc/init.d/httpd graceful"
-  action :nothing
+script "install httpd-2.0.64" do
+  interpreter "bash"
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+    tar -zxvf httpd-2.0.64.tar.gz
+    cd ./httpd-2.0.64
+    ./configure --prefix=/usr/local/
+    make
+    make install
+  EOH
 end
 
 #
 # Configration files
 #
 # httpd.conf
-template "/etc/httpd/conf/httpd.conf" do
-  source "conf/httpd.conf.erb"
-  owner "root"
-  group "root"
-  mode "0664"
-  notifies :restart, "service[httpd]"
-end
+#template "/etc/httpd/conf/httpd.conf" do
+#  source "conf/httpd.conf.erb"
+#  owner "root"
+#  group "root"
+#  mode "0664"
+#  notifies :restart, "service[httpd]"
+#end

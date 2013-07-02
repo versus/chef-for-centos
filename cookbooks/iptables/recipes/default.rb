@@ -31,3 +31,7 @@ template "/etc/sysconfig/iptables" do
   notifies :restart, "service[iptables]"
 end
 
+#TODO: add for ftp passive mode 
+#/etc/sysconfig/iptables-config 
+#IPTABLES_MODULES="ip_conntrack_ftp"
+
