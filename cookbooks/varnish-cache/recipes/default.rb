@@ -18,8 +18,8 @@ execute "install varnish yum repo" do
   notifies :run, "execute[yum_clean_all]", :immediately
 end
 
-execute "yum_clean_all" do
-  command "yum clean all"
+execute "yum_update" do
+  command "yum update"
   action :nothing
 end
 
