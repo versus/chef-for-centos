@@ -24,7 +24,7 @@ end
 
 # remi
 cookbook_file "/var/tmp/remi-release-5.rpm" do
-  source "remi-release-6.rpm"
+  source "remi-release-5.rpm"
   owner "root"
   group "root"
   mode "0644"
@@ -43,7 +43,7 @@ end
 #
 # epel
 template "/etc/yum.repos.d/epel.repo" do
-  source "epel.repo.el6.erb"
+  source "epel.repo.el5.erb"
   owner "root"
   group "root"
   mode "0644"
@@ -51,7 +51,7 @@ end
 
 # remi
 template "/etc/yum.repos.d/remi.repo" do
-  source "remi.repo.el6.erb"
+  source "remi.repo.el5.erb"
   owner "root"
   group "root"
   mode "0644"
