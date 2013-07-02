@@ -51,11 +51,20 @@ package "rpm-build" do
   not_if "rpm -q rpm-build"
 end
 
+package "mc" do
+  action :install
+  not_if "rpm -q mc"
+end
+
 package "tcpdump" do
   action :install
   not_if "rpm -q tcpdump"
 end
 
+package "flex" do
+  action :install
+  not_if "rpm -q flex"
+end
 
 #
 # chkconfig
