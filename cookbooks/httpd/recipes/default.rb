@@ -50,7 +50,6 @@ template "/etc/init.d/httpd " do
   owner "root"
   group "root"
   mode "0755"
-  notifies :restart, "service[httpd]"
 end
 #
 # Configration files
@@ -61,7 +60,6 @@ template "/opt/apache2/conf/httpd.conf " do
   owner "root"
   group "root"
   mode "0664"
-  notifies :restart, "service[httpd]"
 end
 
 execute "chkconfig httpd on" do
