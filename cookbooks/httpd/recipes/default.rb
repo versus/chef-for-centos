@@ -40,6 +40,9 @@ script "install httpd-2.0.64" do
     make
     make install
   EOH
+  not_if do
+    File.exists?("/opt/apache2/bin/httpd")
+  end
 end
 
 #

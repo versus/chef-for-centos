@@ -41,6 +41,11 @@ package "make" do
   not_if "rpm -q make"
 end
 
+package "vim-minimal" do
+  action :install
+  not_if "rpm -q vim-minimal"
+end
+
 package "gettext" do
   action :install
   not_if "rpm -q gettext"
