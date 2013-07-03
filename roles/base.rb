@@ -8,7 +8,8 @@ run_list(
   "recipe[httpd]",
   "recipe[php]",
   "recipe[mysql]",
-  "recipe[varnish-cache]"
+  "recipe[vsftpd]",
+  "recipe[varnish]"
 )
 
 default_attributes({
