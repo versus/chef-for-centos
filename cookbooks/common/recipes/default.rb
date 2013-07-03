@@ -71,7 +71,7 @@ package "flex" do
   not_if "rpm -q flex"
 end
 
-package "varnish"
+package "varnish" do
   action :install
   not_if "rpm -q varnish"
 end
