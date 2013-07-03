@@ -62,6 +62,13 @@ template "/usr/local/apache2/conf/httpd.conf " do
   mode "0664"
 end
 
+service "httpd" do
+  service_name "httpd"
+  supports :status => true, :restart => true, :reload => true
+  notifies :restart, "service[httpd]", :immediately
+end
+
+
 execute "chkconfig httpd on" do
   command "chkconfig httpd on"
 end
