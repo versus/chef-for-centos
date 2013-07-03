@@ -29,6 +29,13 @@ directory '/usr/local/apache2' do
   action :create
 end
 
+directory '/var/www/' do
+  owner "root"
+  group "root"
+  mode "0755"
+  action :create
+end
+
 script "install httpd-2.0.64" do
   interpreter "bash"
   user "root"
@@ -55,7 +62,7 @@ end
 # Configration files
 #
 # httpd.conf
-template "/usr/local/apache2/conf/httpd.conf " do
+template "/usr/local/apache2/conf/httpd.conf" do
   source "conf/httpd.conf.erb"
   owner "root"
   group "root"

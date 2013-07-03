@@ -13,3 +13,11 @@ package "varnish" do
   action :install
   not_if "rpm -q varnish"
 end
+
+template "/etc/varnish/default.vcl" do
+  source "default.vcl.erb"
+  owner "root"
+  group "root"
+  mode "0664"
+end
+
