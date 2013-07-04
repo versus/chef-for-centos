@@ -72,6 +72,10 @@ package "flex" do
 end
 
 
+package "tmux" do
+  action :install
+  not_if "rpm -q tmux"
+end
 
 #
 # chkconfig
