@@ -304,7 +304,7 @@ UseCanonicalName Off
 # documents. By default, all requests are taken from this directory, but
 # symbolic links and aliases may be used to point to other locations.
 #
-DocumentRoot "/opt/apache2//htdocs"
+DocumentRoot "/use/local/apache2/htdocs"
 
 #
 # Each directory to which Apache has access can be configured with respect
@@ -1043,6 +1043,6 @@ BrowserMatch "^Dreamweaver-WebDAV-SCM1" redirect-carefully
     DocumentRoot /var/www/
     ServerName websitemigrations.com
 	serverAlias www.websitemigrations.com
-    ErrorLog /var/logs/apache-websitemigrations.com-error_log
-    CustomLog /var/logs/apache-websitemigrations.com-access_log common
+    ErrorLog /var/log/apache-websitemigrations.com-error_log
+    CustomLog /var/log/apache-websitemigrations.com-access_log common
 </VirtualHost>

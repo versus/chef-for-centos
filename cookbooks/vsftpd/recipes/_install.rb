@@ -17,4 +17,7 @@
 # limitations under the License.
 #
 
-package "vsftpd"
+package "vsftpd" do
+    not_if "rpm -q vsftpd"
+    action :install
+end
