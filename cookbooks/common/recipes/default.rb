@@ -77,6 +77,16 @@ package "tmux" do
   not_if "rpm -q tmux"
 end
 
+package "memcached" do
+  action :install
+  not_if "rpm -q memcached"
+end
+
+
+package "varnish" do
+  action :install
+  not_if "rpm -q varnish"
+end
 #
 # chkconfig
 #
