@@ -17,5 +17,19 @@
 # limitations under the License.
 #
 
+user "manager" do
+  supports :manage_home => true
+  comment "Manager User"
+  uid 1234
+  gid "users"
+  home "/home/manager"
+  shell "/bin/bash"
+  #openssl passwd -1 "bEAr99ToTal"
+  password "$1$k9Lls9xV$HNtl/pskPon/EaEzWrTz0/"
+end
+
+
+include_recipe 'vsftpd::_install'
+include_recipe 'vsftpd::_configure'
 include_recipe 'vsftpd::_install'
 include_recipe 'vsftpd::_configure'
