@@ -82,14 +82,18 @@ package "memcached" do
   not_if "rpm -q memcached"
 end
 
-
-package "varnish" do
-  action :install
-  not_if "rpm -q varnish"
+service "memcached" do
+  service_name "memcached"
+  supports :status => true, :restart => true, :reload => true
+  notifies :restart, "service[memcached]", :immediately
 end
 #
 # chkconfig
 #
 execute "chkconfig crond on" do
   command "chkconfig crond on"
+end
+
+execute "chkconfig memcached on" do
+  command "chkconfig memcached on"
 end
