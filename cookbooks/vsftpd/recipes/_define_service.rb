@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: vsftpd
-# Recipe:: default
+# Recipe:: _define_service
 #
 # Copyright (C) 2013 Sebastian Grewe <sebastian.grewe@gmail.com>
 #
@@ -17,5 +17,12 @@
 # limitations under the License.
 #
 
-include_recipe 'vsftpd::_install'
-include_recipe 'vsftpd::_configure'
+if node['vsftpd']['enabled']
+  service 'vsftpd' do
+    action [ :enable, :start ]
+  end
+else
+  service 'vsftpd' do
+    action [ :disable, :stop ]
+  end
+end
