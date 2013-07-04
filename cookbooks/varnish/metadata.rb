@@ -5,7 +5,6 @@ description      "Installs/Configures chef-varnish"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.1"
 
-depends "apt"
 depends "yum"
 
 %w{redhat centos scientific fedora debian ubuntu arch freebsd amazon}.each do |os|
