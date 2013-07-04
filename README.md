@@ -9,18 +9,6 @@ You only use chef-solo and git command in the custom bash script `chef-host`.
 
 Following will build your CentOS sever environment in a few steps.
 
-1. Modify your host name.
-
-        # vi /etc/sysconfig/network
-
-    You need to edit like following.
-
-        NETWORKING=yes
-        HOSTNAME=web
-
-1. Reboot system to use modified hostname.
-
-        # reboot
 
 1. Install chef using Omnibus. You only run below command.
 
@@ -34,19 +22,13 @@ Following will build your CentOS sever environment in a few steps.
 
 1. Clone this git repository
 
-        # git clone https://github.com/kohkimakimoto/chef-for-centos.git /var/chef
+        # git clone https://github.com/versus/chef-for-centos.git /var/chef
 
 1. Run chef-solo using following command
 
         # sh /var/chef/bin/chef-host
 
     You will get environments of Apache(httpd), MySQL, PHP and 3rd party yum repositories(remi and epel).
-
-# See also
-
-The following page is my blog post about it written in Japanese.
-
-http://kohkimakimoto.hatenablog.com/entry/2013/02/15/121741
 
 
 

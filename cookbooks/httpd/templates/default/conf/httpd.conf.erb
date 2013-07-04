@@ -47,7 +47,7 @@
 #
 # Do NOT add a slash at the end of the directory path.
 #
-ServerRoot "/opt/apache2/"
+ServerRoot "/usr/local/apache2/"
 
 #
 # The accept serialization lock file MUST BE STORED ON A LOCAL DISK.
@@ -589,7 +589,7 @@ AliasMatch ^/manual(?:/(?:de|en|es|fr|ja|ko|ru|tr))?(/.*)?$ "/opt/apache2//manua
 # The same rules about trailing "/" apply to ScriptAlias directives as to
 # Alias.
 #
-ScriptAlias /cgi-bin/ "/opt/apache2//cgi-bin/"
+ScriptAlias /cgi-bin/ "/usr/local/apache2/cgi-bin/"
 
 <IfModule mod_cgid.c>
 #
@@ -603,7 +603,7 @@ ScriptAlias /cgi-bin/ "/opt/apache2//cgi-bin/"
 # "/opt/apache2//cgi-bin" should be changed to whatever your ScriptAliased
 # CGI directory exists, if you have that configured.
 #
-<Directory "/opt/apache2//cgi-bin">
+<Directory "/usr/local/apache2/cgi-bin">
     AllowOverride None
     Options None
     Order allow,deny
@@ -915,7 +915,7 @@ AddHandler type-map var
 #   Alias /error/include/ "/your/include/path/"
 #
 # which allows you to create your own set of files by starting with the
-# /opt/apache2//error/include/ files and copying them to /your/include/path/, 
+# /usr/local/apache2//error/include/ files and copying them to /your/include/path/, 
 # even on a per-VirtualHost basis.  The default include files will display
 # your Apache version number and your ServerAdmin email address regardless
 # of the setting of ServerSignature.

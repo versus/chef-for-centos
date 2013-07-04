@@ -16,7 +16,7 @@
 case "$1" in
 start)
 echo -n "Starting httpd: "
-daemon /usr/local/apache2/bin/httpd -DSSL
+daemon /usr/local/apache2/bin/httpd -DSSL -f /usr/local/apache2/conf/httpd.conf 
 echo
 touch /var/lock/subsys/httpd
 ;;
