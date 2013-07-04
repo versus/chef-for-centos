@@ -37,3 +37,10 @@ service "mysqld" do
   restart_command "/etc/init.d/mysqld restart"
   action :nothing
 end
+
+
+execute "assign-root-password" do
+  command "/usr/bin/mysqladmin -u root password tea54to1n"
+  action :run
+  only_if "/usr/bin/mysql -u root -e 'show databases;'"
+end
