@@ -18,23 +18,13 @@
 #
 
 
-bash "varnish-cache.org" do
-  user "root"
-  code <<-EOH
-    rpm -q varnish || rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release-3.0-1.noarch.rpm
-  EOH
+
+
+package "varnish" do
+  action :install
+  not_if "rpm -q varnish"
 end
 
-
-pkgs = value_for_platform(
-    "default" => %w{ varnish-release varnish }
-)
-
-pkgs.each do |pkg|
-  package pkg do
-    action :install
-  end
-end
 
 template "#{node['varnish']['config_dir']}/default.vcl" do
   source "default.vcl.erb"
