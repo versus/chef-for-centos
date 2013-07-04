@@ -25,7 +25,6 @@ bash "varnish-cache.org" do
   EOH
 end
 
-end
 
 pkgs = value_for_platform(
     "default" => %w{ varnish-release varnish }
