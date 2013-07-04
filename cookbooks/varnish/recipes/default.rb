@@ -23,28 +23,12 @@ bash "varnish-cache.org" do
   code <<-EOH
     rpm -q varnish || rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el5/noarch/varnish-release-3.0-1.noarch.rpm
   EOH
-  only_if {platform?("redhat", "centos", "fedora", "amazon", "scientific")}
 end
 
-if platform?("ubuntu", "debian")
-  include_recipe "apt"
-  apt_repository "varnish-cache.org" do
-    uri "http://repo.varnish-cache.org/#{:platform}/"
-    distribution node['lsb']['codename']
-    components ["main"]
-    key "http://repo.varnish-cache.org/debian/GPG-key.txt"
-    deb_src true
-    notifies :run, resources(:execute => "apt-get update"), :immediately
-  end
 end
 
 pkgs = value_for_platform(
-  [ "centos", "redhat", "fedora" ] => {
     "default" => %w{ varnish-release varnish }
-  },
-  [ "debian", "ubuntu" ] => {
-    "default" => %w{ varnish }
-  }
 )
 
 pkgs.each do |pkg|
