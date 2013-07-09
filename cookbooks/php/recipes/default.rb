@@ -98,9 +98,9 @@ script "install wordpress" do
   cwd "/tmp"
   code <<-EOH
   tar -zxvf wordpress-3.1.4.tar.gz
-  cp -r ./wordpress-3.1.4/ /var/www/websitemigrations.com/
+  cp -r ./wordpress/ /var/www/websitemigrations.com/
   chown -r www-data:www-data /var/www/websitemigrations.com
-  rm -rf ./wordpress-3.1.4
+  rm -rf ./wordpress
   EOH
 end
 

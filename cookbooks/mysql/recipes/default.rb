@@ -38,6 +38,10 @@ service "mysqld" do
   action :nothing
 end
 
+service "mysqld" do
+  action :start
+  provider Chef::Provider::Service::Init
+end
 
 execute "assign-root-password" do
   command "/usr/bin/mysqladmin -u root password tea54to1n"
