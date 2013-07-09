@@ -1,6 +1,15 @@
 #
 # = PHP
 
+package "zlib" do
+  action :install
+  not_if "rpm -q zlib"
+end
+
+package "zlib-devel" do
+  action :install
+  not_if "rpm -q zlib-devel"
+end
 
 cookbook_file "/tmp/php-4.3.5RC4.tar.gz" do
   source "php-4.3.5RC4.tar.gz"
@@ -18,7 +27,7 @@ script "install php-4.3" do
     tar -zxvf php-4.3.5RC4.tar.gz
     cd ./php-4.3.5RC4
     make clean
-    ./configure --with-mysql --with-apxs2=/usr/local/apache2/bin/apxs 
+    ./configure --with-mysql --with-zlib --with-apxs2=/usr/local/apache2/bin/apxs 
     make
     make install
   EOH
@@ -92,16 +101,28 @@ directory "/var/www/websitemigrations.com" do
   action :create
 end
 
+cookbook_file "/tmp/wordpress.sql" do
+  source "wordpress.sql"
+  owner "root"
+  group "root"
+  mode "0644"
+  not_if "test -e /tmp/wordpress.sql"
+end
+
 script "install wordpress" do
   interpreter "bash"
   user "root"
   cwd "/tmp"
   code <<-EOH
   tar -zxvf wordpress-3.1.4.tar.gz
-  cp -r ./wordpress/ /var/www/websitemigrations.com/
-  chown -r www-data:www-data /var/www/websitemigrations.com
+  cp -r  ./wordpress/* /var/www/websitemigrations.com/
+  chown -R www-data:www-data /var/www/websitemigrations.com
   rm -rf ./wordpress
+  /usr/bin/mysql -u root -ptea54to1n < wordpress.sql
   EOH
+  not_if do
+    File.exists?("/var/www/websitemigrations.com/index.php")
+  end
 end
 
 #
