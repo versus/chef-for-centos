@@ -1,5 +1,5 @@
-maintainer       "Kohki Makimoto"
-maintainer_email "kohki.makimoto@gmail.com"
+maintainer       "Valentin Nastenko"
+maintainer_email "versus.ua@gmail.com"
 license          "Apache 2.0"
-description      ""
+description      "yum repo for centos 5.9"
 version          "0.1"

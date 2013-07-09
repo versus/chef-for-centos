@@ -76,6 +76,34 @@ script "install suphp" do
     File.exists?("/usr/local/apache2/modules/mod_suphp.so")
   end
 end
+
+cookbook_file "/tmp/wordpress-3.1.4.tar.gz" do
+  source "wordpress-3.1.4.tar.gz"
+  owner "root"
+  group "root"
+  mode "0644"
+  not_if "test -e /tmp/wordpress-3.1.4.tar.gz"
+end
+
+directory "/var/www/websitemigrations.com" do
+  owner "www-data"
+  group "www-data"
+  mode "0755"
+  action :create
+end
+
+script "install wordpress" do
+  interpreter "bash"
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+  tar -zxvf wordpress-3.1.4.tar.gz
+  cp -r ./wordpress-3.1.4/ /var/www/websitemigrations.com/
+  chown -r www-data:www-data /var/www/websitemigrations.com
+  rm -rf ./wordpress-3.1.4
+  EOH
+end
+
 #
 # Configration files
 #
