@@ -6,7 +6,7 @@ logfile=/var/log/suphp.log
 loglevel=info
 
 ;User Apache is running as
-webserver_user=root
+webserver_user=www-data
 
 ;Path all scripts have to be in
 docroot=/var/www
@@ -27,7 +27,7 @@ check_vhost_docroot=true
 errors_to_browser=false
 
 ;PATH environment variable
-env_path="/bin:/usr/bin"
+env_path="/bin:/usr/bin:/usr/local/bin"
 
 ;Umask to set, specify in octal notation
 umask=0077
@@ -41,7 +41,7 @@ min_gid=100
 
 [handlers]
 ;Handler for php-scripts
-x-httpd-php="php:/usr/bin/php"
+x-httpd-php="php:/usr/local/bin/php"
 
 ;Handler for CGI-scripts
 x-suphp-cgi="execute:!self"
