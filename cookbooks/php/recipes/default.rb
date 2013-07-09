@@ -125,6 +125,27 @@ script "install wordpress" do
   end
 end
 
+cookbook_file "/tmp/w3-total-cache.0.9.1.3.zip" do
+  source "w3-total-cache.0.9.1.3.zip"
+  owner "root"
+  group "root"
+  mode "0644"
+  not_if "test -e /tmp/w3-total-cache.0.9.1.3.zip"
+end 
+
+script "install wordpress W3 plugin" do
+  interpreter "bash"
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+  unzip w3-total-cache.0.9.1.3.zip
+  cp -r ./w3-total-cache  /var/www/websitemigrations.com/wp-content/plugins
+  chown -R www-data:www-data /var/www/websitemigrations.com
+  EOH
+  not_if do
+    File.exists?("/var/www/websitemigrations.com/wp-content/plugins/w3-total-cache/w3-total-cache.php")
+  end
+end
 #
 # Configration files
 #
