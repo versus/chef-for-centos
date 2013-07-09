@@ -52,7 +52,6 @@ script "install php-memcache" do
   code <<-EOH
   tar -zxvf memcache-3.0.8.tgz
   cd ./memcache-3.0.8
-  make clean
   /usr/local/bin/phpize
   ./configure
   make
