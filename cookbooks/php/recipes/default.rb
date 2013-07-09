@@ -50,25 +50,47 @@ script "install php-memcache" do
   user "root"
   cwd "/tmp"
   code <<-EOH
-  tar -zxvf memcache-3.0.8.tgz
-  cd ./memcache-3.0.8
+  tar -zxvf memcache-2.2.7.tgz
+  cd ./memcache-2.2.7
   /usr/local/bin/phpize
   ./configure
   make
   make install
   EOH
+  not_if do
+    File.exists?("/usr/local/lib/php/extensions/no-debug-non-zts-20020429/memcache.so")
+  end
 end
 
+cookbook_file "/tmp/suphp-0.7.2.tar.gz" do
+  source "suphp-0.7.2.tar.gz"
+  owner "root"
+  group "root"
+  mode "0644"
+  not_if "test -e /tmp/suphp-0.7.2.tar.gz"
+end
 
+script "install suphp" do
+  interpreter "bash"
+  user "root"
+  cwd "/tmp"
+  code <<-EOH
+  tar -zxvf suphp-0.7.2.tar.gz
+  cd ./suphp-0.7.2
+  ./configure
+  make
+  make install
+  EOH
+end
 #
 # Configration files
 #
-#template "/etc/php.ini" do
-#  source "php.ini.erb"
-#  owner "root"
-#  group "root"
-#  mode "0644"
-#  notifies :restart, "service[httpd]"
-#end
+template "/usr/local/lib/php.ini" do
+  source "php.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :restart, "service[httpd]"
+end
 
 

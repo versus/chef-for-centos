@@ -71,6 +71,10 @@ package "flex" do
   not_if "rpm -q flex"
 end
 
+package "libtool" do
+  action :install
+  not_if "rpm -q libtool"
+end
 
 package "tmux" do
   action :install
