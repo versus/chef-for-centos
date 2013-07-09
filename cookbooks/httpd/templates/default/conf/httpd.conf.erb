@@ -264,8 +264,8 @@ Listen 8080
 #  when the value of (unsigned)Group is above 60000; 
 #  don't use Group #-1 on these systems!
 #
-User nobody
-Group #-1
+User www-data
+Group www-data
 </IfModule>
 </IfModule>
 
@@ -274,7 +274,7 @@ Group #-1
 # e-mailed.  This address appears on some server-generated pages, such
 # as error documents.  e.g. admin@your-domain.com
 #
-ServerAdmin you@example.com
+ServerAdmin webmaster@websitemigrations.com
 
 #
 # ServerName gives the name and port that the server uses to identify itself.
@@ -1033,7 +1033,7 @@ BrowserMatch "^Dreamweaver-WebDAV-SCM1" redirect-carefully
 #
 # Use name-based virtual hosting.
 #
-#NameVirtualHost *:80
+NameVirtualHost *:8080
 
 #
 # VirtualHost example:
@@ -1042,10 +1042,15 @@ BrowserMatch "^Dreamweaver-WebDAV-SCM1" redirect-carefully
 # server name.
 #
 <VirtualHost *:8080>
-    ServerAdmin webmaster@dummy-host.example.com
+    ServerAdmin webmaster@websitemigrations.com
     DocumentRoot /var/www/
     ServerName websitemigrations.com
 	serverAlias www.websitemigrations.com
     ErrorLog /var/log/apache-websitemigrations.com-error_log
     CustomLog /var/log/apache-websitemigrations.com-access_log common
+	
+    suPHP_Engine on
+    suPHP_UserGroup www-data www-data
+    AddHandler x-httpd-php .php .php3 .php4
+    suPHP_AddHandler x-httpd-php
 </VirtualHost>

@@ -1,16 +1,6 @@
 #
 # = PHP
-#
 
-#
-#  install from source
-#
-# cd /usr/src/
-# tar -zxvf php-4.3.5RC4.tar.gz
-# cd ./php-4.3.5RC4
-# ./configure --with-mysql --with-apxs2=/usr/local/apache2/bin/apxs
-# make
-# make install
 
 cookbook_file "/tmp/php-4.3.5RC4.tar.gz" do
   source "php-4.3.5RC4.tar.gz"
@@ -82,6 +72,9 @@ script "install suphp" do
   make
   make install
   EOH
+  not_if do
+    File.exists?("/usr/local/apache2/modules/mod_suphp.so")
+  end
 end
 #
 # Configration files

@@ -49,9 +49,11 @@ end
 service "varnish" do
   supports :restart => true, :reload => true
   action [ :enable, :start ]
+  not_if "rpm -q varnish"
 end
 
 service "varnishlog" do
   supports :restart => true, :reload => true
-  action [ :enable, :start ]
+  action [ :enable, :start]
+  not_if "rpm -q varnish"
 end

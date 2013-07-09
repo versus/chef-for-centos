@@ -13,6 +13,18 @@
 # make
 # make install
 
+user "www-data" do
+  comment "apache daemon"
+  system true
+  shell "/bin/false"
+  action :create
+end
+
+group "www-data" do
+  action :create
+  append true  
+end
+
 cookbook_file "/tmp/httpd-2.0.64.tar.gz" do
   source "httpd-2.0.64.tar.gz"
   owner "root"
@@ -23,15 +35,15 @@ end
 
 
 directory '/usr/local/apache2' do
-  owner "root"
-  group "root"
+  owner "www-data"
+  group "www-data"
   mode "0755"
   action :create
 end
 
 directory '/var/www/' do
-  owner "root"
-  group "root"
+  owner "www-data"
+  group "www-data"
   mode "0755"
   action :create
 end
