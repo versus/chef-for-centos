@@ -85,7 +85,7 @@ end
 service "memcached" do
   service_name "memcached"
   supports :status => true, :restart => true, :reload => true
-  notifies :restart, "service[memcached]", :immediately
+  notifies :start, "service[memcached]", :immediately
 end
 #
 # chkconfig
