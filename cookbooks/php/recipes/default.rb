@@ -78,7 +78,7 @@ script "install suphp" do
   tar -zxvf suphp-0.7.2.tar.gz
   cd ./suphp-0.7.2
   autoreconf -vif
-  ./configure --with-apxs=/usr/local/apache2/bin/apxs
+  ./configure --with-apxs=/usr/local/apache2/bin/apxs  --sysconfdir=/etc
   make
   make install
   EOH
@@ -86,12 +86,21 @@ end
 #
 # Configration files
 #
+
+template "/etc/suphp.conf" do
+  source "suphp.conf.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  not_if "test -e /etc/suphp.conf"
+end
+
 template "/usr/local/lib/php.ini" do
   source "php.ini.erb"
   owner "root"
   group "root"
   mode "0644"
-  notifies :restart, "service[httpd]"
+  not_if "test -e /usr/local/lib/php.ini"
 end
 
 
