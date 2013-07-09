@@ -78,7 +78,7 @@ script "install suphp" do
   tar -zxvf suphp-0.7.2.tar.gz
   cd ./suphp-0.7.2
   autoreconf -vif
-  /configure --with-apxs=/usr/local/apache2/bin/apxs
+  ./configure --with-apxs=/usr/local/apache2/bin/apxs
   make
   make install
   EOH
