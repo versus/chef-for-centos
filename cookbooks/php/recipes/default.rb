@@ -37,12 +37,12 @@ script "install php-4.3" do
   end
 end
 
-cookbook_file "/tmp/memcache-3.0.8.tgz" do
-  source "memcache-3.0.8.tgz"
+cookbook_file "/tmp/memcache-2.2.7.tgz" do
+  source "memcache-2.2.7.tgz"
   owner "root"
   group "root"
   mode "0644"
-  not_if "test -e /tmp/memcache-3.0.8.tgz"
+  not_if "test -e /tmp/memcache-2.2.7.tgz"
 end
 
 script "install php-memcache" do
