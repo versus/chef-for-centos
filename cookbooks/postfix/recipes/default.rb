@@ -5,14 +5,17 @@
 #
 # Configuration files
 #
-template "/etc/selinux/config" do
- source "config.erb"
-  owner "root"
-  group "root"
-  mode "0644"
+
+package "dovecot" do
+  action :install
+  not_if "rpm -q dovecot"
 end
 
-execute "selinux setenforce 0" do
-  command "setenforce 0"
-  only_if "getenforce | grep Enforcing"
+package "postfix" do
+  action :install
+  not_if "rpm -q postfix"
 end
+
+
+
+
