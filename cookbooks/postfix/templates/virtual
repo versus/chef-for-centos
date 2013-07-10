@@ -1,0 +1,5 @@
+# Remember to execute "sudo postmap virtual" every time you update this file!
+# Trailing slash is required to ensure Maildir storage format is used
+
+test@websitemigrations.com websitemigrations.com/test/
+
